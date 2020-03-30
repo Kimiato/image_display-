@@ -1,4 +1,4 @@
-# image_display
+# image_display_tools
 一个用PHP写的展示大量图片文件的代码，含文件名导入数据库python脚本
 # 使用方法
 在数据库中创建images库，导入 images.sql文件  
