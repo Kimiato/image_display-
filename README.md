@@ -7,5 +7,6 @@
 运行python文件  
 修改index.php文件中的数据库配置  
 将index.php放到网站目录  
-    
-前端展示制作中
+# 其他说明
+display.html 为下拉刷新的展示模式  
+api.php 为配合display.html 的配套api  
