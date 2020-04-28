@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+    <html lang="zh-CH">
+    <head>
+        <meta charset="UTF-8">
+        <title>获得随机的二次元图片❤</title>
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<style type="text/css">
+</style>
+        <script type="text/javascript">
+            function get_xhr(){    // 获取Ajax核心对象
+                var xhr=null;
+                if(window.XMLHttpRequest){   // 如果当前浏览器支持Ajax对象
+                    xhr = new XMLHttpRequest();
+                }else{
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                return xhr;
+            }
+            function get_pic(){
+                var xhr=get_xhr();
+                var path="API地址";
+                xhr.open("get",path,true);
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState===4){
+                        if(xhr.status===200) {
+                            var data = xhr.responseText;
+                            console.log(data);
+                                var mydiv = document.getElementById('mydiv')
+                                var img = document.createElement('img')
+                                img.src = "load.gif"
+                                img.onload = function() {
+                                 img.src = data
+                                }
+                                mydiv.appendChild(img)
+                            }
+                        }
+                }
+                xhr.send(null);
+            }
+get_pic();
+get_pic();
+get_pic();
+get_pic();
+window.onscroll = function () {
+        var a = document.documentElement.scrollTop || document.body.scrollTop;//滚动条y轴上的距离
+        var b = document.documentElement.clientHeight || document.body.clientHeight;//可视区域的高度
+         var c = document.documentElement.scrollHeight || document.body.scrollHeight;//可视化的高度与溢出的距离（总高度）
+        if(a + b > c-1){
+        get_pic();
+        get_pic();
+       }
+   }
+        </script>
+    </head>
+<body>
+<h2 style="text-align:center;">下滑即可出现随机图片❤</h2>
+<div id="mydiv"></div>
+<script type="text/javascript">
+$("body").on("touchstart", function(e) {
+    e.preventDefault();
+    startX = e.originalEvent.changedTouches[0].pageX,
+    startY = e.originalEvent.changedTouches[0].pageY;
+});
+$("body").on("touchmove", function(e) {
+    e.preventDefault();
+    moveEndX = e.originalEvent.changedTouches[0].pageX,
+    moveEndY = e.originalEvent.changedTouches[0].pageY,
+    X = moveEndX - startX,
+    Y = moveEndY - startY;
+     
+ if ( Math.abs(Y) > Math.abs(X) && Y > 0) {
+        get_pic();
+        get_pic();
+    }
+});
+        </script>
+
+<script type="text/javascript">
+window.onload = function () {
+};
+</script>
+</body>
+</html>
