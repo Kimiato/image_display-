@@ -7,7 +7,7 @@ class DataLoader:
         pass
 
     def connect_database(self):
-        pass
+        self.db = pymysql.connect()
 
     def create_table(self):
         pass
@@ -19,6 +19,9 @@ class DataLoader:
         pass
 
     def get_setting(self):
+        pass
+    
+    def get_scan_path(self):
         pass
 #连接数据库的ip，账号，密码，库名
 db = pymysql.connect("localhost", "root", "b081db1aeae010f1", "images")
