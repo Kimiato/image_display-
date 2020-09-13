@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>随机二刺猿图片</title>
+		<title>随机图片</title>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	</head>
 	<body>
