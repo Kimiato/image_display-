@@ -19,7 +19,7 @@ class DataLoader:
         pass
 
     def get_setting(self):
-    
+        pass
 #连接数据库的ip，账号，密码，库名
 db = pymysql.connect("localhost", "root", "b081db1aeae010f1", "images")
 #创建游标
