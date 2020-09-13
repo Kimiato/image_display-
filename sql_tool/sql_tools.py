@@ -1,5 +1,5 @@
 import os
-from sql_tool.setting import database_setting
+from sql_tool.setting import DATABASE_SETTTING
 import pymysql
 
 class DataLoader:
@@ -17,6 +17,8 @@ class DataLoader:
 
     def get_file_pwd(self):
         pass
+
+    def get_setting(self):
     
 #连接数据库的ip，账号，密码，库名
 db = pymysql.connect("localhost", "root", "b081db1aeae010f1", "images")
