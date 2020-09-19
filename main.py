@@ -6,3 +6,4 @@ if __name__ == '__main__':
     # 第一次使用请 init_table
     data_loader.init_table()
     data_loader.write_data()
+    print("一共载入", data_loader.file_count, "张图片")

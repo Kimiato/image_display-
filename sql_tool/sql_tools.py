@@ -42,7 +42,7 @@ class DataLoader:
             "`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,"
             "`filepath` varchar(255) NOT NULL,"
             "PRIMARY KEY (`id`) USING BTREE"
-            ") ENGINE = InnoDB AUTO_INCREMENT = 225315 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;"
+            ") ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;"
         )
         self.cursor.execute(sql, args=())
         # 创建访客统计的数据库
