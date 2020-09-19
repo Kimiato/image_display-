@@ -9,4 +9,4 @@
 将index.php放到网站目录  
 # 其他说明
 display.html 为下拉刷新的展示模式  
-api.php 为配合display.html 的配套api  
+api.php 为配合display.html 的配合api  
