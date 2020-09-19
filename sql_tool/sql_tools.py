@@ -27,24 +27,25 @@ class DataLoader:
 
     def init_table(self):
         # 创建储存图片的数据库
-        sql = '''
-            DROP TABLE IF EXISTS `image_info`;
-            CREATE TABLE `image_info` (
-            `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-            `filepath` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-            PRIMARY KEY (`id`) USING BTREE
-            ) ENGINE = InnoDB AUTO_INCREMENT = 225315 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-        '''
-        self.cursor.executemany(sql, args=())
+        sql = (
+            "CREATE TABLE IF NOT EXISTS `view_statistics` ("
+            "`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,"
+            "`view_count` int(11) UNSIGNED,"
+            "PRIMARY KEY (`id`)"
+            ") ENGINE=InnoDB DEFAULT CHARSET=utf8;"
+        )
+        self.cursor.execute(sql, args=())
+        sql = "DROP TABLE IF EXISTS `image_info`;"
+        self.cursor.execute(sql, args=())
+        sql = (
+            "CREATE TABLE `image_info` ("
+            "`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,"
+            "`filepath` varchar(255) NOT NULL,"
+            "PRIMARY KEY (`id`) USING BTREE"
+            ") ENGINE = InnoDB AUTO_INCREMENT = 225315 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;"
+        )
+        self.cursor.execute(sql, args=())
         # 创建访客统计的数据库
-        sql = '''
-            CREATE TABLE IF NOT EXISTS `view_statistics` (
-            `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-            `view_count` int(11) UNSIGNED,
-            PRIMARY KEY (`id`)
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-        '''
-        self.cursor.executemany(sql, args=())
 
     def write_data(self):
         '''
