@@ -72,9 +72,6 @@ class DataLoader:
 
         self.db.commit()
 
-    def get_file_pwd(self):
-        pass
-
     def get_scan_path(self):
         input_scan_path = input("请输入图像文件夹扫描到绝对路径")
         while not os.path.isdir(input_scan_path):
