@@ -21,8 +21,8 @@ $random_id = mt_rand(0, $result->num_rows);
 //echo $random_id;
 $sql = "SELECT * FROM image_info where id = {$random_id}";
 $result = $conn->query($sql);
-$img_info = $result->fetch_assoc()['filename'];
-$img_path = 'http://images.214214.xyz/images/imgs/'.$img_info;
+$img_info = $result->fetch_assoc()['filepath'];
+$img_path = '网站域名'.$img_info;
 echo $img_path;
 $conn->close();
 ?>

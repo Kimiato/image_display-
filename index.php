@@ -26,9 +26,9 @@
 			//echo $random_id;
 			$sql = "SELECT * FROM image_info where id = {$random_id}";
 			$result = $conn->query($sql);
-			$img_info = $result->fetch_assoc()['filename'];
+			$img_info = $result->fetch_assoc()['filepath'];
 			//echo $img_info;
-			echo '<img style="cursor:pointer" alt="'.$img_info.'" src="图片文件夹地址'.$img_info.'" onclick="location.reload();" />';
+			echo '<img style="cursor:pointer" alt="'.$img_info.'" src="图片文件夹域名地址'.$img_info.'" onclick="location.reload();" />';
 			$conn->close();
 		?>
 	</body>
