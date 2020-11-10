@@ -14,16 +14,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
 die("连接失败: " . $conn->connect_error);
-}
+} 
 $sql = "SELECT * FROM image_info";
 $result = mysqli_query($conn, $sql);
 $random_id = mt_rand(0, $result->num_rows);
-//echo $random_id;
 $sql = "SELECT * FROM image_info where id = {$random_id}";
-$result = $conn->query($sql);
-$img_info = $result->fetch_assoc()['filepath'];
-$img_path = '网站名'.$img_info;
-echo $img_path;
+$result = mysqli_query($conn, $sql);
+$img_info = $result->fetch_object()->filepath;
+$img_path = '网站'.$img_info;
 //访客统计
 $sql = "SELECT count(*) from view_statistics";
 $result = $conn->query($sql)->fetch_assoc()['count(*)'];
@@ -38,5 +36,7 @@ else {
     $sql = "INSERT INTO view_statistics (view_count) VALUES (1)";
     $conn->query($sql);
 }
+
 $conn->close();
+header("Location: $img_path", ture, 302);
 ?>

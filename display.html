@@ -4,8 +4,17 @@
         <meta charset="UTF-8">
         <title>获得随机的二次元图片❤</title>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <style type="text/css">
+    div img{
+        width:auto;
+        max-width:100%;
+        border-image-repeat: round;
+        background-size:cover;
+        margin: 10px 10px;
+
+    }
+
 </style>
         <script type="text/javascript">
             function get_xhr(){    // 获取Ajax核心对象
@@ -19,7 +28,7 @@
             }
             function get_pic(){
                 var xhr=get_xhr();
-                var path="API地址";
+                var path="http://api.php";
                 xhr.open("get",path,true);
                 xhr.onreadystatechange = function(){
                     if(xhr.readyState===4){
@@ -38,10 +47,12 @@
                 }
                 xhr.send(null);
             }
-get_pic();
-get_pic();
-get_pic();
-get_pic();
+        get_pic();
+        get_pic();
+        get_pic();
+        get_pic();
+
+
 window.onscroll = function () {
         var a = document.documentElement.scrollTop || document.body.scrollTop;//滚动条y轴上的距离
         var b = document.documentElement.clientHeight || document.body.clientHeight;//可视区域的高度
@@ -49,11 +60,12 @@ window.onscroll = function () {
         if(a + b > c-1){
         get_pic();
         get_pic();
+
        }
    }
         </script>
     </head>
-<body>
+<body style="overflow-x: hidden;">
 <h2 style="text-align:center;">下滑即可出现随机图片❤</h2>
 <div id="mydiv"></div>
 <script type="text/javascript">
@@ -74,7 +86,7 @@ $("body").on("touchmove", function(e) {
         get_pic();
     }
 });
-        </script>
+</script>
 
 <script type="text/javascript">
 window.onload = function () {

@@ -79,5 +79,5 @@ class DataLoader:
             input_scan_path = input("请重新输入: ")
         self.scan_path = input_scan_path
 
-    def database_setting_init(self):        
+    def database_setting_init(self):
         print("请到sql_tool/setting.py设置数据库相关信息。")
