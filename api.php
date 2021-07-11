@@ -22,7 +22,7 @@ $random_id = mt_rand(0, $result->num_rows);
 $sql = "SELECT * FROM image_info where id = {$random_id}";
 $result = $conn->query($sql);
 $img_info = $result->fetch_assoc()['filepath'];
-$img_path = '网站名'.$img_info;
+$img_path = $img_info;
 echo $img_path;
 //访客统计
 $sql = "SELECT count(*) from view_statistics";
