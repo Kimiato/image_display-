@@ -1,5 +1,4 @@
 import os
-from sql_tool.setting import DATABASE_SETTTING
 import pymysql
 
 class DataLoader:
@@ -9,6 +8,8 @@ class DataLoader:
         self.include_ext = ['jpg', 'bmp', 'png', 'gif', 'webp', 'svg', 'jpeg', 'tif']
 
     def connect_database(self):
+        DATABASE_SETTTING = self.read_config_file('config.php')
+        DATABASE_SETTTING.pop('dbname')
         for value in DATABASE_SETTTING.values():
             if not value:
                 self.database_setting_init()
@@ -16,8 +17,23 @@ class DataLoader:
         try:
             self.db = pymysql.connect(**DATABASE_SETTTING)
         except Exception:
-            raise Exception("连接失败, 请检查sql_tool/setting.py文件是否设置有误。")
+            raise Exception("连接失败, 请检查 config.php 文件是否设置有误。")
         self.cursor = self.db.cursor()
+
+    def read_config_file(self, file_path):
+        with open(file_path, 'r', encoding='utf-8') as config_file:
+            DATABASE_SETTTING = {}
+            print('读取数据库配置')
+            for line in config_file.readlines():
+                line = line.replace(' ','')  # 去除空白
+                if line[0] == '$':
+                    var_name = line.split('=')[0][1:]
+                    var_value = line.split('=')[1].split('"')[1]
+                    print(f'{var_name}: {var_value}')
+                    DATABASE_SETTTING[var_name] = var_value
+        DATABASE_SETTTING['port'] = int(DATABASE_SETTTING['port'])
+        self.DATABASE_SETTTING = DATABASE_SETTTING
+        return DATABASE_SETTTING
 
     def init_database(self, database_name='images'):
         sql = f'CREATE DATABASE IF NOT EXISTS `{database_name}`;'
