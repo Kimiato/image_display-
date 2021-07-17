@@ -28,7 +28,7 @@
             }
             function get_pic(){
                 var xhr=get_xhr();
-                var path="http://api.php";
+                var path="api.php";
                 xhr.open("get",path,true);
                 xhr.onreadystatechange = function(){
                     if(xhr.readyState===4){
@@ -39,7 +39,8 @@
                                 var img = document.createElement('img')
                                 img.src = "load.gif"
                                 img.onload = function() {
-                                 img.src = data
+                                    img.onload = null;
+                                    img.src = data
                                 }
                                 mydiv.appendChild(img)
                             }
@@ -58,9 +59,8 @@ window.onscroll = function () {
         var b = document.documentElement.clientHeight || document.body.clientHeight;//可视区域的高度
          var c = document.documentElement.scrollHeight || document.body.scrollHeight;//可视化的高度与溢出的距离（总高度）
         if(a + b > c-1){
-        get_pic();
-        get_pic();
-
+            get_pic();
+            get_pic();
        }
    }
         </script>
@@ -80,8 +80,7 @@ $("body").on("touchmove", function(e) {
     moveEndY = e.originalEvent.changedTouches[0].pageY,
     X = moveEndX - startX,
     Y = moveEndY - startY;
-     
- if ( Math.abs(Y) > Math.abs(X) && Y > 0) {
+ if (Math.abs(Y) > Math.abs(X) && Y > 0) {
         get_pic();
         get_pic();
     }
