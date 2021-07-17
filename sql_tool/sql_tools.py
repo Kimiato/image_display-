@@ -4,7 +4,7 @@ import pymysql
 class DataLoader:
     def __init__(self):
         self.connect_database()
-        self.init_database()
+        self.init_database(self.DATABASE_SETTTING['dbname'])
         self.include_ext = ['jpg', 'bmp', 'png', 'gif', 'webp', 'svg', 'jpeg', 'tif']
 
     def connect_database(self):
