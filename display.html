@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>获得随机的二次元图片❤</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
     <style type="text/css">
         div img {
             width: auto;
@@ -73,12 +73,15 @@
         }
 
         $(window).scroll(function () {
-            console.log(getScrollTop() + getClientHeight(), getScrollHeight())
             if (getScrollTop() + getClientHeight() >= getScrollHeight() - 1) {
                 get_pic();
             }
         });
-        get_pic();
+
+        function hasScrollbar() {
+            return getScrollHeight() > (window.innerHeight || document.documentElement.clientHeight);
+        }
+
     </script>
 </head>
 
@@ -91,7 +94,7 @@
             startX = e.originalEvent.changedTouches[0].pageX,
                 startY = e.originalEvent.changedTouches[0].pageY;
         });
-        $("body").on("touchmove", function (e) {
+        $(window).on("touchmove", function (e) {
             e.preventDefault();
             moveEndX = e.originalEvent.changedTouches[0].pageX,
                 moveEndY = e.originalEvent.changedTouches[0].pageY,
@@ -105,6 +108,11 @@
 
     <script type="text/javascript">
         window.onload = function () {
+            get_pic();
+            if (!hasScrollbar()){
+                get_pic();
+                get_pic();
+            }
         };
     </script>
 </body>
