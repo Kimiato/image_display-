@@ -8,7 +8,7 @@ class DataLoader:
         self.include_ext = ['jpg', 'bmp', 'png', 'gif', 'webp', 'svg', 'jpeg', 'tif']
 
     def connect_database(self):
-        DATABASE_SETTTING = self.read_config_file('config.php')
+        DATABASE_SETTTING = self.read_config_file('config.php').copy()
         DATABASE_SETTTING.pop('dbname')
         for value in DATABASE_SETTTING.values():
             if not value:
