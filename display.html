@@ -75,6 +75,7 @@
         $(window).scroll(function () {
             if (getScrollTop() + getClientHeight() >= getScrollHeight() - 1) {
                 get_pic();
+                get_pic();
             }
         });
 
@@ -102,6 +103,8 @@
                 Y = moveEndY - startY;
             if (Math.abs(Y) > Math.abs(X) && Y > 0) {
                 get_pic();
+                get_pic();
+
             }
         });
     </script>
